@@ -1,0 +1,9 @@
+默认为高，一次显示太多效果时依据重要程度丢弃不重要的以用于创建新的。
+///
+(很低verylow/低low/高high/很高veryhigh/至关重要critical)
+
+爆炸效果:至关重要 critical
+开火效果:很高     veryhigh
+子弹轨迹:高       high
+死亡效果:低       low
+其他效果:很低     verylow

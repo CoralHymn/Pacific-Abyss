@@ -1,0 +1,147 @@
+#⌚⌛⏰⏱⏲⏳☣☢☠✍⛟💰𐃌𐃍𓁃𓀛💾📋📟
+
+[resource_配送资源]
+displayName:配送资源
+displayNameShort:配送资源
+
+[resource_配送奴役人口]
+displayName:配送奴役人口
+displayNameShort:配送奴役人口
+
+[global_resource_工兵]
+hidden:true
+displayName:工兵
+displayNameShort:工兵
+displayColor:#00FF40
+#==========主要资源==========#
+
+[global_resource_后方支援等级]
+hidden:true
+displayName:后方支援等级
+displayNameShort:后方支援等级
+
+[global_resource_后方支援力度]
+hidden:true
+displayName:后方支援力度
+displayNameShort:后方支援力度
+#==========主要资源==========#
+
+[global_resource_机密信息]
+displayName:机密信息
+displayNameShort:机密信息
+displayColor:#00FF40
+displayWhenZero:true
+displayTextAppendResource:战备物资
+#名称前加注
+displayTextPrefix:⚠|机密信息
+#名称后加注
+displayTextPostfix:|
+
+[global_resource_战备物资]
+hidden:true
+displayName:战备物资
+displayNameShort:战备物资
+displayColor:#E8E8FF
+displayWhenZero:true
+displayTextAppendResource:支援点数
+#名称前加注
+displayTextPrefix:$战备物资
+#名称后加注
+displayTextPostfix:|
+
+[global_resource_支援点数]
+hidden:true
+displayName:支援点数
+displayNameShort:支援点数
+displayColor:#FF4000
+displayTextAppendResource:钢铁物资
+#名称前加注
+displayTextPrefix:♖支援点数
+#名称后加注
+displayTextPostfix:|
+
+[global_resource_钢铁物资]
+hidden:true
+displayName:钢铁物资
+displayNameShort:钢铁物资
+displayColor:#00FFFF
+displayTextAppendResource:兵役人口
+#名称前加注
+displayTextPrefix:⚙︎钢铁物资
+#名称后加注
+displayTextPostfix:|
+#==========次要资源==========#
+
+[global_resource_兵役人口]
+hidden:true
+displayName:兵役人口
+displayNameShort:兵役人口
+displayColor:#00FF40
+#名称前加注
+displayTextPrefix:♙兵役人口
+#名称后加注
+displayTextPostfix:|
+
+[global_resource_空军机库]
+hidden:true
+displayName:空军机库
+displayNameShort:空军机库
+displayColor:#FF0000
+
+[global_resource_重型装甲车库]
+hidden:true
+displayName:重型装甲车库
+displayNameShort:重型装甲车库
+displayColor:#E8E8FF
+
+[global_resource_中型装甲车库]
+hidden:true
+displayName:中型装甲车库
+displayNameShort:中型装甲车库
+displayColor:#E8E8FF
+
+[global_resource_轻型装甲车库]
+hidden:true
+displayName:轻型装甲车库
+displayNameShort:轻型装甲车库
+displayColor:#E8E8FF
+
+[global_resource_战舰港口停泊]
+hidden:true
+displayName:战舰港口停泊
+displayNameShort:战舰港口停泊
+displayColor:#E8E8FF
+
+[global_resource_特殊战舰]
+hidden:true
+displayName:特殊战舰
+displayNameShort:特殊战舰
+displayColor:#E8E8FF
+#==========================限制制造距离=========================#
+
+[placementRule_检测标签]
+searchTags:机场
+searchTeam:own
+searchDistance:100
+excludeIncompleteBuildings:false
+excludeNonBuildings:true
+maxCount:0
+blocksPlacement:true
+cannotPlaceMessage:此地区已被机场覆盖 不可在此建造
+checkEachTile:true
+
+[placementRule_检测标签盟友]
+searchTags:机场
+searchTeam:ally
+searchDistance:100
+excludeIncompleteBuildings:false
+excludeNonBuildings:true
+maxCount:0
+blocksPlacement:true
+cannotPlaceMessage:此地区已被机场覆盖 不可在此建造
+checkEachTile:true
+
+[hiddenAction_被占领]
+autoTrigger:if numberOfUnitsInTeam(withTag='指挥所') == 0 and not self.isOnNeutralTeam() and not self.tags(includes="敌对中立") and not self.tags(includes="基地")
+requireConditional:if numberOfUnitsInTeam(withTag='阵营选择') == 0 and not self.tags(includes="定点目标") and not self.tags(includes="空气墙") and not self.tags(includes="拦截几率效果")
+deleteSelf:true

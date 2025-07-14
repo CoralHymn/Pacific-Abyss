@@ -1,0 +1,223 @@
+#==========================核心=========================#
+
+[core]
+copyFrom:"""
+ROOT:单位/共用单位/单位通用/单位通用.key
+"""
+#====单位信息====#
+name:信号塔支援点
+tags:信号塔支援点
+class:CustomUnitMetadata
+maxHp:1000
+mass:1000
+radius:0
+#====建造代码====#
+exit_moveAwayAmount:0
+exit_dirOffset:0
+#====运输机制====#
+maxTransportingUnits:1
+transportUnitsAddUnloadOption:false
+transportUnitsBlockAirAndWaterUnits:false
+transportUnitsBlockOtherTransports:false
+#====核心机制====#
+isUnselectable:true
+canNotBeDirectlyAttacked:true
+canNotBeDamaged:true
+
+[attachment_信号塔]
+x:0
+y:0
+idleDir:90
+resetRotationWhenNotAttacking:true
+canBeAttackedAndDamaged:true
+addTransportedUnits:true
+deattachIfWantingToMove:true
+canAttack:true
+isUnselectable:false
+#==========================Image=========================#
+
+[hiddenAction_检测美]
+autoTrigger:if numberOfUnitsInTeam(withTag='美') >= 1
+requireConditional:if not self.hasFlag(id=20)
+addResources:setFlag=2
+buildSpeed:0
+
+[hiddenAction_检测日]
+autoTrigger:if numberOfUnitsInTeam(withTag='日') >= 1
+requireConditional:if not self.hasFlag(id=20)
+addResources:setFlag=1
+buildSpeed:0
+
+[template_建造模板]
+displayType:queueUnit
+ai_isHighPriority:true
+highPriorityQueue:true
+allowMultipleInQueue:false
+#==========================日军支援=========================#
+
+[action_日军工兵小队]
+isVisible:if self.hasFlag(id=1)
+@copyFromSection:template_建造模板
+pos:1
+price:支援点数=80
+text:[ 工兵小队 ]
+description:信号塔冷却30s
+unitShownInUI:日军工兵
+spawnUnits:日军工兵*5
+buildSpeed:0
+addAllActionCooldownsTime:30s
+
+[action_日军机动侦察小队]
+isVisible:if self.hasFlag(id=1)
+@copyFromSection:template_建造模板
+pos:2
+price:支援点数=80
+text:[ 机动侦查小队 ]
+description:信号塔冷却48s
+unitShownInUI:97式军用侧三轮摩托车
+spawnUnits:"""
+97式军用侧三轮摩托车*1,
+180-1型运兵卡车(addResources=ammo=1),
+94式骑兵装甲车
+"""
+buildSpeed:0
+addAllActionCooldownsTime:48s
+
+[action_日军精英小队]
+isVisible:if self.hasFlag(id=1)
+@copyFromSection:template_建造模板
+pos:3
+price:支援点数=127
+text:[ 精英小队 ]
+description:信号塔冷却60s
+unitShownInUI:日军精英小队
+spawnUnits:"""
+日军精英小队
+"""
+buildSpeed:0
+addAllActionCooldownsTime:60s
+
+[action_日军本土装甲支援]
+isVisible:if self.hasFlag(id=1)
+@copyFromSection:template_建造模板
+pos:4
+price:支援点数=255
+text:[ 装甲支援 ]
+description:信号塔冷却120s
+unitShownInUI:三式“奇努改”中战坦克
+spawnUnits:"""
+三式“奇努”中战坦克*3,
+三式“奇努改”中战坦克
+"""
+buildSpeed:0
+addAllActionCooldownsTime:120s
+
+[action_日军火炮支援分队]
+isVisible:if self.hasFlag(id=1)
+@copyFromSection:template_建造模板
+pos:5
+price:支援点数=150
+text:[ 火炮支援分队 ]
+description:信号塔冷却120s
+unitShownInUI:97式90mm轻迫击炮兵-部署
+spawnUnits:"""
+97式90mm轻迫击炮兵-移动*3,
+92式70mm步兵炮_移动
+"""
+buildSpeed:0
+addAllActionCooldownsTime:120s
+#==========================美军支援=========================#
+
+[action_美军工兵小队]
+isVisible:if self.hasFlag(id=2)
+@copyFromSection:template_建造模板
+pos:1
+price:支援点数=80
+text:[ 工兵小队 ]
+description:信号塔冷却30s
+unitShownInUI:美军工兵
+spawnUnits:"""
+美军工兵*5
+"""
+buildSpeed:0
+addAllActionCooldownsTime:30s
+
+[action_美军装甲部队1]
+isVisible:if self.hasFlag(id=2)
+@copyFromSection:template_建造模板
+pos:2
+price:支援点数=160
+text:[ 初级装甲部队 ]
+description:信号塔冷却100s
+unitShownInUI:M3“李”中型坦克
+spawnUnits:"""
+M3“斯图亚特”轻型坦克*2,
+M4中型“谢尔曼”坦克.A2型
+"""
+buildSpeed:0
+addAllActionCooldownsTime:100s
+
+[action_美军装甲部队2]
+isVisible:if self.hasFlag(id=2) and self.resource.后方支援等级 >= 1
+@copyFromSection:template_建造模板
+pos:3
+price:支援点数=240
+text:[ 中级装甲部队 ]
+description:信号塔冷却150s
+unitShownInUI:M3“斯图亚特”轻型坦克
+spawnUnits:"""
+M3“斯图亚特”轻型坦克,
+M3“李”中型坦克*2,
+M4中型“谢尔曼”坦克.A2型*2
+"""
+buildSpeed:0
+addAllActionCooldownsTime:150s
+
+[action_美军装甲部队3]
+isVisible:if self.hasFlag(id=2) and self.resource.后方支援等级 >= 2
+@copyFromSection:template_建造模板
+pos:4
+price:支援点数=360
+text:[ 高级装甲部队 ]
+description:信号塔冷却250s
+unitShownInUI:M4A3中型“谢尔曼”坦克.E8型
+spawnUnits:"""
+M3“李”中型坦克*3,
+M4中型“谢尔曼”坦克.A2型*3,
+M4A3中型“谢尔曼”坦克.E8型*2,
+T34卡利欧波
+"""
+buildSpeed:0
+addAllActionCooldownsTime:250s
+
+[action_美军火炮部队]
+isVisible:if self.hasFlag(id=2)
+@copyFromSection:template_建造模板
+pos:5
+price:支援点数=180
+text:[ 火炮部队 ]
+description:信号塔冷却120s
+unitShownInUI:M2型60mm迫击炮兵-移动
+spawnUnits:"""
+M2型60mm迫击炮兵-移动*3,
+M1式75MM榴弹炮_移动
+"""
+buildSpeed:0
+addAllActionCooldownsTime:120s
+
+[graphics]
+drawLayer:experimentals
+image:SHARED:blank.png
+showQueueBar:true
+
+[movement]
+movementType:LAND
+moveSpeed:0
+
+[ai]
+ai_upgradePriority:0.5
+buildPriority:0.8
+noneInBaseExtraPriority:0.8
+noneGlobalExtraPriority:0.3
+maxEachBase:10
+useAsBuilder:true

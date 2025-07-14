@@ -1,0 +1,219 @@
+#==========================核心=========================#
+
+[core]
+copyFrom:"""
+ROOT:单位/共用单位/单位通用/单位通用.key
+"""
+#=====单位信息====#
+name:美军装甲调度站
+tags:美军装甲调度站,建筑工事
+class:CustomUnitMetadata
+maxHp:1000
+mass:1000
+radius:20
+#====建造机制====#
+buildSpeed:45s
+#====建筑机制====#
+isBuilding:true
+footprint:-2,-1,2,1
+constructionFootprint:-2,-1,4,1
+#====核心资源====#
+borrowResourcesWhileAlive:重型装甲车库=-1,中型装甲车库=-2,轻型装甲车库=-4
+#====核心机制====#
+showInEditor:true
+#====音效代码====#
+soundOnNewSelection:ROOT:单位/效果模板/选择音效.ogg
+#==========================Image=========================#
+
+[graphics]
+drawLayer:experimentals
+icon_build:装甲调度站主图.png
+image:装甲调度站.png
+image_back:装甲调度站底板.png
+imageScale:0.8
+image_shadow:AUTO
+shadowOffsetX:1
+shadowOffsetY:-3
+
+[movement]
+movementType:BUILDING
+
+[attachment_调度站装甲维修点]
+x:70
+y:0
+onCreateSpawnUnitOf:调度站装甲维修点
+isUnselectable:false
+#======================信息框槽======================#
+
+[action_信息框槽]
+pos:0.1
+isVisible:true
+text:[信息查看]
+isLocked:true
+isLockedMessage:"""
+\n📋轻型装甲车库:[%{self.resource.轻型装甲车库}/4]
+\n📋中型装甲车库:[%{self.resource.中型装甲车库}/2]
+\n📋重型装甲车库:[%{self.resource.重型装甲车库}/1]
+\n  💰战备物资:[%{self.resource.战备物资}/?]
+"""
+displayType:rally
+canPlayerCancel:false
+allowMultipleInQueue:false
+alwaysSinglePress:true
+buildSpeed:0s
+#======================零级建造单位======================#
+#====轻型装甲====#标准建造速度为30
+
+[action_M3半履带运兵卡车]
+pos:1
+price:战备物资=114
+isVisible:true
+text:[M3半履带运兵卡车]
+description:轻型装甲车辆
+displayType:queueUnit
+unitShownInUI:M3半履带运兵卡车
+isLocked:if self.resource.轻型装甲车库 <= 0
+isLockedMessage:-轻型装甲车库已满-
+spawnUnits:M3半履带运兵卡车(offsetX=70,offsetY=0,offsetDir=0)
+#AI高优先级:true
+#高优先级队列:true
+allowMultipleInQueue:false
+buildSpeed:18s
+#======================一级建造单位======================#
+#====轻型装甲====#标准建造速度为30
+
+[action_M16半履带防空型卡车]
+pos:11
+price:战备物资=124
+isVisible:if self.resource.后方支援等级 >= 1
+text:[M16半履带防空型卡车]
+description:轻型装甲车辆
+displayType:queueUnit
+unitShownInUI:M16半履带防空型卡车_对地
+isLocked:if self.resource.轻型装甲车库 <= 0
+isLockedMessage:-轻型装甲车库已满-
+spawnUnits:M16半履带防空型卡车_对地(offsetX=70,offsetY=0,offsetDir=0)
+#AI高优先级:true
+#高优先级队列:true
+allowMultipleInQueue:false
+buildSpeed:40s
+
+[action_M3“斯图亚特”轻型坦克]
+pos:12
+price:战备物资=149,钢铁物资=30,兵役人口=4
+isVisible:if self.resource.后方支援等级 >= 1
+text:[M3“斯图亚特”轻型坦克]
+description:轻型装甲车辆
+displayType:queueUnit
+unitShownInUI:M3“斯图亚特”轻型坦克
+isLocked:if self.resource.轻型装甲车库 <= 0
+isLockedMessage:-轻型装甲车库已满-
+spawnUnits:M3“斯图亚特”轻型坦克(offsetX=70,offsetY=0,offsetDir=0)
+ai_isHighPriority:true
+highPriorityQueue:true
+allowMultipleInQueue:false
+buildSpeed:41s
+#======================二级建造单位======================#
+#====中型装甲====#标准建造速度为40
+
+[action_M4中型“谢尔曼”坦克.A2型]
+pos:20
+price:战备物资=176,钢铁物资=50,兵役人口=5
+isVisible:if self.resource.后方支援等级 >= 2
+text:[M4中型“谢尔曼”坦克.A2型]
+description:中型装甲车辆
+displayType:queueUnit
+unitShownInUI:M4中型“谢尔曼”坦克.A2型
+isLocked:if self.resource.中型装甲车库 <= 0
+isLockedMessage:-中型装甲车库已满-
+spawnUnits:M4中型“谢尔曼”坦克.A2型(offsetX=70,offsetY=0,offsetDir=0)
+ai_isHighPriority:true
+highPriorityQueue:true
+allowMultipleInQueue:false
+buildSpeed:46s
+
+[action_M4A3中型“谢尔曼”坦克.E8型]
+pos:21
+price:战备物资=178,钢铁物资=50,兵役人口=5
+isVisible:if self.resource.后方支援等级 >= 2
+text:[M4A3中型“谢尔曼”坦克.E8型]
+description:中型装甲车辆
+displayType:queueUnit
+unitShownInUI:M4A3中型“谢尔曼”坦克.E8型
+isLocked:if self.resource.中型装甲车库 <= 0
+isLockedMessage:-中型装甲车库已满-
+spawnUnits:M4A3中型“谢尔曼”坦克.E8型(offsetX=70,offsetY=0,offsetDir=0)
+ai_isHighPriority:true
+highPriorityQueue:true
+allowMultipleInQueue:false
+buildSpeed:48s
+
+[action_卡利欧波]
+pos:23
+price:战备物资=185,钢铁物资=60,兵役人口=5
+isVisible:if self.resource.后方支援等级 >= 2
+text:[T34-卡利欧波 管风琴]
+description:中型装甲车辆
+displayType:queueUnit
+unitShownInUI:T34卡利欧波
+isLocked:if self.resource.中型装甲车库 <= 0
+isLockedMessage:-中型装甲车库已满-
+spawnUnits:T34卡利欧波(offsetX=70,offsetY=0,offsetDir=0)
+ai_isHighPriority:true
+highPriorityQueue:true
+allowMultipleInQueue:false
+buildSpeed:49s
+#=================玩法介绍======================#
+
+[action_玩法介绍]
+pos:99
+isVisible:false
+text:[玩法介绍]
+displayType:action
+addResources:setFlag=5
+alwaysSinglePress:true
+canPlayerCancel:false
+allowMultipleInQueue:false
+buildSpeed:0s
+
+[action_返回]
+pos:100
+isVisible:if self.hasFlag(id=5)
+text:[返回]
+displayType:action
+addResources:unsetFlag:5
+alwaysSinglePress:true
+canPlayerCancel:false
+allowMultipleInQueue:false
+buildSpeed:0s
+
+[action_装甲车库]
+pos:100
+isVisible:if self.hasFlag(id=5)
+text:=装甲车库=
+description:-每一个装甲车位可调度一辆装甲单位,\n一辆装甲单位占用一个车位-
+displayType:infoOnly
+alwaysSinglePress:true
+canPlayerCancel:false
+allowMultipleInQueue:false
+buildSpeed:0s
+
+[action_装甲维修]
+pos:100
+isVisible:if self.hasFlag(id=5)
+text:=装甲维修=
+description:-本模组的装甲单位使用了模块化的装甲机制 and 可视化装甲构件状态受损信息,\n转甲单位构件受损时需要返回调度站的维修点进行维修,\n如何维修？？？\n控制装甲单位 点击那个维修点进行装载之后自动进行维修-
+displayType:infoOnly
+alwaysSinglePress:true
+canPlayerCancel:false
+allowMultipleInQueue:false
+buildSpeed:0s
+#=================AI控制======================#
+
+[ai]
+ai_upgradePriority:0.5
+buildPriority:0.8
+noneInBaseExtraPriority:0.8
+noneGlobalExtraPriority:0.3
+maxEachBase:10
+useAsBuilder:true
