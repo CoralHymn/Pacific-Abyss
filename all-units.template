@@ -27,6 +27,7 @@ displayNameShort:后方支援力度
 #==========主要资源==========#
 
 [global_resource_机密信息]
+hidden:true
 displayName:机密信息
 displayNameShort:机密信息
 displayColor:#00FF40
@@ -38,7 +39,7 @@ displayTextPrefix:⚠|机密信息
 displayTextPostfix:|
 
 [global_resource_战备物资]
-hidden:true
+#hidden:true
 displayName:战备物资
 displayNameShort:战备物资
 displayColor:#E8E8FF
