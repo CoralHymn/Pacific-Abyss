@@ -1,5 +1,5 @@
 [mod]
-title:深海大洋【0.1.0-正式版】
+title:深海大洋【0.1.1-测试版】
 description:"""
 \n>=====♜欢迎来到深海大洋♜=====<
 \n-作者:老同志
@@ -11,7 +11,7 @@ description:"""
 \n-深海大洋模组一代续版 战争主题于美日两国的太平洋战场 模组推荐在500x500以上大地图屎用-
 \n有何意见可在大洋群内提出-
 \n
-\n此版本为正式版，使用MIT开源协议
+\n此版本为测试版，使用MIT开源协议
 \n===-大洋唯一群号-===
 \n    =681951625=
 \nGithub:https://github.com/CoralHymn/Pacific-Abyss
@@ -23,10 +23,10 @@ description:"""
 \n③由于设备限制，目前模组只支持Android（4.0以上）与Microsoft（PC）64位操作系统以及IOS（苹果系统）
 \n④本模组或许需要以上1GB运行内存，请保证设备有剩余的运行内存，以保障正常加载以及流畅度
 \n
-\n该版本更新时间为<2025-8-16>
+\n该版本更新时间为<2025-11-18>
 """
 thumbnail:深海大洋.png
 minVersion:1.15p9
 [music]
-sourceFolder:音乐/
+sourceFolder:music/
 whenUsingUnitsFromThisMod_playExclusively:true
